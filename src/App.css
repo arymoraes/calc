@@ -1,38 +1,227 @@
-.App {
-  text-align: center;
+@font-face {
+  font-family: 'Overpass Mono Regular';
+  src: local('Overpass Mono Regular'),
+    url('./assets/fonts/overpass-mono-regular.otf') format('opentype');
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+* {
+  box-sizing: border-box;
+  font-family: 'Overpass Mono Regular', sans-serif;
+  margin: 0;
+  padding: 0;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+body {
+  background-color: #c5e4e7;
+  height: 100vh;
+  padding-top: 50px;
+  width: 100vw;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.container {
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.container__img {
+  display: block;
+  margin: 0 auto;
+  max-width: 70px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.card {
+  align-items: center;
+  background-color: #fff;
+  border-radius: 15px;
+  box-shadow: rgb(50 50 93 / 25%) 0px 6px 12px -2px,
+    rgb(0 0 0 / 30%) 0px 3px 7px -3px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 70px;
+  max-width: 60%;
+  padding: 15px;
+  width: auto;
+}
+
+.card__details {
+  display: grid;
+  gap: 0.5rem;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.card__details-bill {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 0 5px;
+}
+
+.card__details-amount {
+  display: flex;
+  flex-direction: column;
+}
+
+input {
+  padding: 8px;
+}
+
+.card input {
+  background-color: #f5f5f5;
+  border: none;
+  border-radius: 5px;
+  height: 28px;
+  text-align: right;
+}
+/* .card__details-calculate-tip {
+  margin-left: 15px;
+} */
+
+.card__details-select-tip {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.card__details-buttons button,
+.card__details-buttons input {
+  font-size: 12px;
+  /* flex-basis: 33.33%; */
+  margin: 3px 3px;
+  max-width: 100%;
+  padding: 3px;
+  width: 60px;
+}
+
+.card__details-buttons button {
+  background-color: #00474b;
+  border: none;
+  border-radius: 3px;
+  color: #fff;
+}
+
+.card__details-buttons button:hover {
+  background-color: #9fe8df;
+  color: #00474b;
+}
+
+.active-tip {
+  background-color: #9fe8df !important;
+  color: #00474b;
+}
+
+.icon-1 {
+  background: url('./assets/images/icon-dollar-1.svg') no-repeat;
+  background-position: 6px 9px;
+  background-size: 6px;
+}
+
+.icon-2 {
+  background: url('./assets/images/icon-person.svg') no-repeat;
+  background-position: 6px 9px;
+  background-size: 7px;
+}
+
+.card__details-smalltext {
+  color: #00474b;
+  font-size: 11px;
+  font-weight: 700;
+  margin: 5px 0;
+  margin-bottom: 5px;
+  margin-top: 20px;
+}
+
+.card input:focus {
+  outline-color: #c5e4e7;
+}
+
+.card_details-calculate-tip-card {
+  background-color: #00474b;
+  border-radius: 8px;
+  height: auto;
+  min-height: 250px;
+  padding: 1.2rem;
+  position: relative;
+  width: 100%;
+}
+
+.card__details-calculate-tip-content-title span {
+  color: #3f8187;
+}
+
+.card_details-calculate-tip-content-row-1 {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+}
+
+.card_details-calculate-tip-content-row-2 {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 30px;
+}
+
+.card__details-calculate-tip-content-title {
+  color: #fff;
+  font-size: 10px;
+}
+
+.card__details-calculate-tip-content-amount {
+  color: #28c6ad;
+  font-size: 14px;
+}
+
+.card__details-calculate-tip-content-amount img {
+  width: 12px;
+}
+
+.card__details-calculate-tip-button button {
+  background-color: #28c6ad;
+  border: none;
+  border-radius: 4px;
+  bottom: 1.2rem;
+  color: #00474b;
+  cursor: pointer;
+  font-weight: 700;
+  left: 1.2rem;
+  padding: 5px;
+  position: absolute;
+  right: 1.2rem;
+}
+
+/* phone */
+@media (max-width: 640px) {
+  .card__details-buttons {
+    gap: 0.5rem;
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
-  to {
-    transform: rotate(360deg);
+
+  .card {
+    max-width: 100%;
+    flex-direction: column;
+    margin-left: 0;
+    margin-right: 0;
+    border-radius: 0;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+  }
+
+  .card__details {
+    gap: 1.5rem;
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+  }
+
+  .card__details-buttons button {
+    width: 100%;
+  }
+
+  .card__details-buttons input {
+    width: 100%;
   }
 }
